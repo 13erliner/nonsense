@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+
+    <title>nonsense</title>
+    <script>
+        var musicPlaying = false; 
+        var audio = new Audio('MP3/one last kiss.mp3');
+        function well(url) {
+            return fetch(url, { method: 'GET' })
+                .then(response => {
+                    return response.json();
+                });
+        }
+
+        function test() {
+            well('https://api.vvhan.com/api/en').then(res => {
+                document.getElementById("result").innerHTML = JSON.stringify(res.data.zh);
+                document.getElementById("res").innerHTML = JSON.stringify(res.data.en);
+                document.getElementById("resu").innerHTML = `<img src="${res.data.pic}" alt="图片">`;
+            });
+        }
+
+        function no() {
+            alert("别点了，别点了！")
+        }
+
+        function yes() {
+            if (!musicPlaying) {
+                audio.play();
+                musicPlaying = true;
+            } else {
+                audio.pause();
+                audio.currentTime = 0;
+                musicPlaying = false;
+            }
+            alert("点一次就好了哥哥,第一次是播放第二次是暂停")
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
+          <script src="https://cdn.jsdelivr.net/npm/jquery@3.2/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery.scrollto@2.1.2/jquery.scrollTo.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/stevenjoezhang/live2d-widget@latest/autoload.js"></script>
+    <link rel="stylesheet" href="st.css"/>
+</head>
+<body style="background-image: url('pic/photo.png');">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <p class="biaoti">好的，那么，这是一些奇奇怪怪的选项</p>
+    <p class="fubiaoti">没错我实在是不知道怎么引入了，总而言之是一些按钮，来看看按钮的作用吧</p>
+    <div class="container">
+        <div class="one"><button type="button" onclick="no()">选项一</button></div>
+        <div class="two"><button type="button" onclick="test()">选项二</button></div>
+        <div class="three"><button type="button" onclick="yes()">选项三</button></div>
+    </div>      
+        <div id="result" class="neirong"></div>
+        <br>
+        <div id="res" class="neirong"></div>
+        <br>
+        <div id="resu" class="neirong"></div>
+    <a href="https://www.bilibili.com/video/BV1GJ411x7h7/?spm_id_from=333.337.search-card.all.click&vd_source=e872e12a3046731f1c89a5385a68dcfd" class="know"><strong>来吧，点一下，不会有事的。</strong></a>
+    <br>
+    <script type="text/javascript">
+      ! function (e, t, a) {
+         function r() {
+             for (var e = 0; e < s.length; e++) s[e].alpha <= 0 ? (t.body.removeChild(s[e].el), s.splice(e, 1)) : (s[
+                     e].y--, s[e].scale += .004, s[e].alpha -= .013, s[e].el.style.cssText = "left:" + s[e].x +
+                 "px;top:" + s[e].y + "px;opacity:" + s[e].alpha + ";transform:scale(" + s[e].scale + "," + s[e]
+                 .scale + ") rotate(45deg);background:" + s[e].color + ";z-index:99999");
+             requestAnimationFrame(r)
+         }
+
+         function n() {
+             var t = "function" == typeof e.onclick && e.onclick;
+             e.onclick = function (e) {
+                 t && t(), o(e)
+             }
+         }
+
+         function o(e) {
+             var a = t.createElement("div");
+             a.className = "heart", s.push({
+                 el: a,
+                 x: e.clientX - 5,
+                 y: e.clientY - 5,
+                 scale: 1,
+                 alpha: 1,
+                 color: c()
+             }), t.body.appendChild(a)
+         }
+
+         function i(e) {
+             var a = t.createElement("style");
+             a.type = "text/css";
+             try {
+                 a.appendChild(t.createTextNode(e))
+             } catch (t) {
+                 a.styleSheet.cssText = e
+             }
+             t.getElementsByTagName("head")[0].appendChild(a)
+         }
+
+         function c() {
+             return "rgb(" + ~~(255 * Math.random()) + "," + ~~(255 * Math.random()) + "," + ~~(255 * Math
+                 .random()) + ")"
+         }
+         var s = [];
+         e.requestAnimationFrame = e.requestAnimationFrame || e.webkitRequestAnimationFrame || e
+             .mozRequestAnimationFrame || e.oRequestAnimationFrame || e.msRequestAnimationFrame || function (e) {
+                 setTimeout(e, 1e3 / 60)
+             }, i(
+                 ".heart{width: 10px;height: 10px;position: fixed;background: #f00;transform: rotate(45deg);-webkit-transform: rotate(45deg);-moz-transform: rotate(45deg);}.heart:after,.heart:before{content: '';width: inherit;height: inherit;background: inherit;border-radius: 50%;-webkit-border-radius: 50%;-moz-border-radius: 50%;position: fixed;}.heart:after{top: -5px;}.heart:before{left: -5px;}"
+             ), n(), r()
+     }(window, document);
+ </script>
+</body>
+</html>
